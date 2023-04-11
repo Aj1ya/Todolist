@@ -7,6 +7,8 @@ const app = express();
 
 let items = [];
 
+let workItems = [];
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,16 +27,28 @@ app.get("/", (req, res)=>{
     
     let day = today.toLocaleDateString("en-US", options);
    
-    res.render( "list", {kindOfDay: day, newListItems:items} );
+    res.render( "list", {listTitle: day, newListItems:items} );
 
 });
 
 app.post("/", (req, res)=>{
+    console.log(req.body.list);
     let item = req.body.newItem;
+
     if( !(item == null || item == "") ){
-        items.push( item );
+        if( req.body.list === "work"){
+            workItems.push( item );
+            res.redirect("/work");
+        }else{
+            items.push( item );
+            res.redirect("/");
+        }
     }
-    res.redirect("/");
+  
+});
+
+app.get("/work", (req, res)=>{
+    res.render("list", {listTitle: "work", newListItems: workItems});
 });
 
 app.listen(3000, (req, res)=>{
