@@ -2,7 +2,7 @@
 This is a to do list app.
 
 
-version 1.3
+version 1.4
 
 #Add
-- Added header and footer template
+- Ejs templating to reduce repeatable functions ie. function getDate() and getDay()
