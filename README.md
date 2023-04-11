@@ -2,7 +2,7 @@
 This is a to do list app.
 
 
-version 1.2
+version 1.3
 
 #Add
-- Added seperate work list
+- Added header and footer template

@@ -51,6 +51,10 @@ app.get("/work", (req, res)=>{
     res.render("list", {listTitle: "work", newListItems: workItems});
 });
 
+app.get("/about", (req, res)=>{
+    res.render("about");
+});
+
 app.listen(3000, (req, res)=>{
     console.log( "app started in 3000" );
 });
