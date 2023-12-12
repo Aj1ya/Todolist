@@ -56,7 +56,13 @@ form {
   margin-left: 20px;
 }
 
-button {
+button.del-btn{
+  padding: 0.5rem 0.25rem;
+  border-radius: 10px;
+  min-width: 80px;
+}
+
+button.add-item-btn{
   min-height: 50px;
   width: 50px;
   border-radius: 50%;

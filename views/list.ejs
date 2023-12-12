@@ -7,12 +7,12 @@
         <% for( var i=0; i<newListItems.length; i++ ){ %>
             <div class="item">
                 <input type="checkbox">
-                <p><%= newListItems[i] %></p>
+                <p><%= newListItems[i] %></p><button class="del-btn">Delete</button>
             </div>
         <% } %> 
         <form action="/" method="post" class="item">
             <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-            <button type="submit" name="list" value="<%= listTitle %>">+</button>
+            <button class="add-item-btn" type="submit" name="list" value="<%= listTitle %>">+</button>
         </form>       
     </div>
 
