@@ -66,12 +66,21 @@ button.add-item-btn{
   min-height: 50px;
   width: 50px;
   border-radius: 50%;
+  border: 2px solid transparent;
   border-color: transparent;
   background-color: #A683E3;
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;
   border-width: 0;
+  transition: all ease-in-out 500ms;
+}
+
+button.add-item-btn:hover{
+  color: #A683E3;
+  background-color: transparent;
+  border: 2px solid #A683E3;
+  cursor: pointer;
 }
 
 input[type="text"] {

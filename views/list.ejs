@@ -1,19 +1,35 @@
 <%- include("header") -%>
-    <div class="box" id="heading">
-        <h1><%= listTitle %></h1>
-    </div>
+<div class="box" id="heading">
+    <h1><%= listTitle %></h1>
+</div>
 
-    <div class="box">        
-        <% for( var i=0; i<newListItems.length; i++ ){ %>
-            <div class="item">
-                <input type="checkbox">
-                <p><%= newListItems[i] %></p><button class="del-btn">Delete</button>
-            </div>
-        <% } %> 
-        <form action="/" method="post" class="item">
-            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-            <button class="add-item-btn" type="submit" name="list" value="<%= listTitle %>">+</button>
-        </form>       
-    </div>
+<div class="box">        
+    <% for(var i=0; i<newListItems.length; i++) { %>
+        <div class="item" id="item<%= i %>">
+            <input type="checkbox">
+            <p><%= newListItems[i] %></p>
+            <button class="del-btn" onclick="deleteItem(<%= i %>)">Delete</button>
+        </div>
+    <% } %> 
+    <form action="/" method="post" class="item">
+        <input type="text" name="newItem" placeholder="Type your task here" autocomplete="off">
+        <button class="add-item-btn" type="submit" name="list" value="<%= listTitle %>">+</button>
+    </form>       
+</div>
 
 <%- include("footer") -%>
+
+<script>
+    function deleteItem(index) {
+        fetch(`/delete/${index}`, { method: 'DELETE' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const itemToRemove = document.getElementById(`item${index}`);
+                    itemToRemove.remove();
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+
